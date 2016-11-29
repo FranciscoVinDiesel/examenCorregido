@@ -38,7 +38,7 @@ AppAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Administración', 'url' => ['/user/admin'], 'visible' => Yii::$app->user->can('administrador')],
        // ['label' => 'Registro', 'url' => ['/user/admin'], 'visible' => Yii::$app->user->can('administrador')],
-        //['label' => 'Registrarse', 'url' => ['/user/registration/register'],'visible' => Yii::$app->user->can('administrador')],
+        ['label' => 'Registrarse', 'url' => ['/persona/index'],'visible' => Yii::$app->user->can('administrador')],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/user/security/login']];
