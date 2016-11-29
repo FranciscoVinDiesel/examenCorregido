@@ -12,5 +12,5 @@ use yii\rest\ActiveController;
 
 class UserController extends ActiveController
 {
-    public $modelClass = 'app\models\User';//aqui va la tabla de los datos q se quieran mostrar
+    public $modelClass = 'app\models\Bebidas';//aqui va la tabla de los datos q se quieran mostrar
 }
