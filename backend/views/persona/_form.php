@@ -12,11 +12,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'iduser')->dropDownList( \yii\helpers\ArrayHelper::map(\dektrium\user\models\User::find()->all(), 'id', 'username')) ?>
+
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'departamento')->dropDownList([ 'Sistemas' => 'Sistemas', 'Audotoria' => 'Audotoria', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'saldo')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

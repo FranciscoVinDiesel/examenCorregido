@@ -10,7 +10,28 @@ namespace backend\controllers;
 
 use yii\rest\ActiveController;
 
-class UserController extends ActiveController
+class ApiController extends ActiveController
 {
-    public $modelClass = 'app\models\Bebidas';//aqui va la tabla de los datos q se quieran mostrar
+    public $modelClass = 'backend\models\Bebidas';//aqui va la tabla de los datos q se quieran mostrar
+   
+
+    public function actions() {
+        $actions=parent::actions();
+        unset($actions['index']);
+        return $actions;
+    }
+
+
+    public function actionIndex($usuario,$opcion){
+        if ($opcion=='consumo') {
+            $query = \frontend\models\Bebidas::find(['idpersona'=>2])->select(['refrescos','valor'])->all()  ;
+            return $query;
+        }
+        if ($opcion == 'saldo'){
+            $query = \frontend\models\Bebidas::find()->where(['idpersona'=>$usuario])->sum('valor')  ;
+            return round($query,2);
+        }
+    }
+    
+    
 }

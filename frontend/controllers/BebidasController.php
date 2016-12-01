@@ -26,6 +26,24 @@ class BebidasController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+
+                    [
+                        'actions' => ['logout','create'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+
+
         ];
     }
 
@@ -64,9 +82,25 @@ class BebidasController extends Controller
     public function actionCreate()
     {
         $model = new Bebidas();
+        $model->idpersona = Yii::$app->user->identity->id;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+        if ($model->load(Yii::$app->request->post())) {
+            
+        if($model->refrescos == 'Cafe'){
+            $model->valor = 0.50;
+   
+        }if($model->refrescos == 'Te'){
+            $model->valor = 0.40;
+            
+        }if($model->refrescos == 'Agua'){
+            $model->valor = 0.25;
+            
+        }            
+           
+            $model->save();
+            Yii::$app->session->setFlash('success', "Ud acaba de comprar una bebida");
+            return $this->redirect(['create']);
         } else {
             return $this->render('create', [
                 'model' => $model,

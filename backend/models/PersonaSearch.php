@@ -18,9 +18,8 @@ class PersonaSearch extends Persona
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'iduser'], 'integer'],
             [['nombre', 'departamento'], 'safe'],
-            [['saldo'], 'number'],
         ];
     }
 
@@ -61,7 +60,7 @@ class PersonaSearch extends Persona
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'saldo' => $this->saldo,
+            'iduser' => $this->iduser,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])

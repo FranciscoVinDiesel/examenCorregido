@@ -36,7 +36,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Bebidas', 'url' => ['/bebidas/index']],
+        ['label' => 'Bebidas', 'url' => ['/bebidas/create']],
         //['label' => 'Contact', 'url' => ['/site/contact']],
          //['label' => 'Perfil', 'url' => ['/user/settings/profile']],
          //['label' => 'Cuenta', 'url' => ['/user/settings/account']],

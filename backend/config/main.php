@@ -42,7 +42,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
              'rules' => [//este es codigo para hacer web service
-        ['class' => 'yii\rest\UrlRule', 'controller' => 'apAi'],
+        ['class' => 'yii\rest\UrlRule', 'controller' => 'api'],
     ],
         ],
         
